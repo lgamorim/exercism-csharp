@@ -3,5 +3,5 @@
 public enum BoardSpace
 {
     Blank,
-    Asterisk
+    Mine
 }

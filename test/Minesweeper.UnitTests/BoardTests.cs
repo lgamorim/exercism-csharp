@@ -16,4 +16,45 @@ public class BoardTests
         board.Rows.Should().Be(rows);
         board.Columns.Should().Be(columns);
     }
+
+    [Theory]
+    [InlineData(0, 1)]
+    [InlineData(1, 2)]
+    [InlineData(2, 2)]
+    public void Should_GetSquareAsMine_When_SetMineAtSquare(int row, int column)
+    {
+        var board = new Board(4, 5);
+
+        board.SetMineAt(row, column);
+
+        board.GetSquareAt(row, column).Should().Be(BoardSpace.Mine);
+    }
+
+    [Fact]
+    public void Should_GetAnyOtherSquareAsBlank_After_SetBoardMines()
+    {
+        var board = new Board(4, 5);
+
+        board.SetMineAt(0, 1);
+        board.SetMineAt(0, 3);
+        board.SetMineAt(1, 2);
+        board.SetMineAt(2, 2);
+
+        board.GetSquareAt(0, 0).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(0, 2).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(0, 4).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(1, 0).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(1, 1).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(1, 3).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(1, 4).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(2, 0).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(2, 1).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(2, 3).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(2, 4).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(3, 0).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(3, 1).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(3, 2).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(3, 3).Should().Be(BoardSpace.Blank);
+        board.GetSquareAt(3, 4).Should().Be(BoardSpace.Blank);
+    }
 }
