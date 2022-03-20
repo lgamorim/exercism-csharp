@@ -28,6 +28,21 @@ public class Board
         return rectangle[row, column];
     }
 
+    public int GetTotalAdjacentMines(int row, int column)
+    {
+        var total = 0;
+        for (var i = row - 1; i <= row + 1; i++)
+        {
+            for (var j = column - 1; j <= column + 1; j++)
+            {
+                if (i < 0 || i >= Rows || j < 0 || j >= Columns) continue;
+                if (HasMineAt(i, j)) total++;
+            }
+        }
+
+        return total;
+    }
+
     public override string ToString()
     {
         var display = new StringBuilder();
@@ -48,5 +63,10 @@ public class Board
     private static char DisplaySquare(BoardSpace type)
     {
         return type == BoardSpace.Mine ? MineDisplay : BlankDisplay;
+    }
+
+    private bool HasMineAt(int row, int column)
+    {
+        return rectangle[row, column] == BoardSpace.Mine;
     }
 }

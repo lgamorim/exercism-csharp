@@ -59,6 +59,34 @@ public class BoardTests
     }
 
     [Fact]
+    public void Should_GetCorrectCountOfAdjacentMines_When_GetTotalAdjacentMines()
+    {
+        var board = new Board(4, 5);
+
+        board.SetMineAt(0, 1);
+        board.SetMineAt(0, 3);
+        board.SetMineAt(1, 2);
+        board.SetMineAt(2, 2);
+        
+        board.GetTotalAdjacentMines(0, 0).Should().Be(1);
+        board.GetTotalAdjacentMines(0, 2).Should().Be(3);
+        board.GetTotalAdjacentMines(0, 4).Should().Be(1);
+        board.GetTotalAdjacentMines(1, 0).Should().Be(1);
+        board.GetTotalAdjacentMines(1, 1).Should().Be(3);
+        board.GetTotalAdjacentMines(1, 3).Should().Be(3);
+        board.GetTotalAdjacentMines(1, 4).Should().Be(1);
+        board.GetTotalAdjacentMines(2, 0).Should().Be(0);
+        board.GetTotalAdjacentMines(2, 1).Should().Be(2);
+        board.GetTotalAdjacentMines(2, 3).Should().Be(2);
+        board.GetTotalAdjacentMines(2, 4).Should().Be(0);
+        board.GetTotalAdjacentMines(3, 0).Should().Be(0);
+        board.GetTotalAdjacentMines(3, 1).Should().Be(1);
+        board.GetTotalAdjacentMines(3, 2).Should().Be(1);
+        board.GetTotalAdjacentMines(3, 3).Should().Be(1);
+        board.GetTotalAdjacentMines(3, 4).Should().Be(0);
+    }
+
+    [Fact]
     public void Should_DisplayBlankPerDotAndAsteriskPerMine_When_ToString()
     {
         var board = new Board(4, 5);
