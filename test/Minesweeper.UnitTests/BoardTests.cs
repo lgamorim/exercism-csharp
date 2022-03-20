@@ -1,10 +1,18 @@
 using FluentAssertions;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Exercism.Minesweeper.UnitTests;
 
 public class BoardTests
 {
+    private readonly ITestOutputHelper testOutputHelper;
+
+    public BoardTests(ITestOutputHelper testOutputHelper)
+    {
+        this.testOutputHelper = testOutputHelper;
+    }
+
     [Fact]
     public void Should_SetRectangleWithRowsAndColumns_When_NewBoardIsCreated()
     {
@@ -89,6 +97,7 @@ public class BoardTests
     [Fact]
     public void Should_DisplayBlankPerDotAndAsteriskPerMine_When_ToString()
     {
+        const string expected = ".*.*.\n..*..\n..*..\n.....\n";
         var board = new Board(4, 5);
 
         board.SetMineAt(0, 1);
@@ -96,13 +105,16 @@ public class BoardTests
         board.SetMineAt(1, 2);
         board.SetMineAt(2, 2);
 
-        const string display = ".*.*.\n..*..\n..*..\n.....\n";
-        board.ToString().Should().Be(display);
+        var display = board.ToString();
+        
+        testOutputHelper.WriteLine(display);
+        display.Should().Be(expected);
     }
 
     [Fact]
     public void Should_ReplaceMinesAdjacentWithCount_When_ApplyingTransform()
     {
+        const string expected = "1*3*1\n13*31\n.2*2.\n.111.\n";
         var board = new Board(4, 5);
 
         board.SetMineAt(0, 1);
@@ -110,7 +122,9 @@ public class BoardTests
         board.SetMineAt(1, 2);
         board.SetMineAt(2, 2);
 
-        const string display = "1*3*1\n13*31\n.2*2.\n.111.\n";
-        board.Transform().Should().Be(display);
+        var display = board.Transform();
+        
+        testOutputHelper.WriteLine(display);
+        display.Should().Be(expected);
     }
 }
