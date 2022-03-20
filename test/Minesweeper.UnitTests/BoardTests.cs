@@ -13,8 +13,8 @@ public class BoardTests
 
         var board = new Board(rows, columns);
 
-        board.Rows.Should().Be(rows);
-        board.Columns.Should().Be(columns);
+        board.TotalRows.Should().Be(rows);
+        board.TotalColumns.Should().Be(columns);
     }
 
     [Theory]
@@ -98,5 +98,19 @@ public class BoardTests
 
         const string display = ".*.*.\n..*..\n..*..\n.....\n";
         board.ToString().Should().Be(display);
+    }
+
+    [Fact]
+    public void Should_ReplaceMinesAdjacentWithCount_When_ApplyingTransform()
+    {
+        var board = new Board(4, 5);
+
+        board.SetMineAt(0, 1);
+        board.SetMineAt(0, 3);
+        board.SetMineAt(1, 2);
+        board.SetMineAt(2, 2);
+
+        const string display = "1*3*1\n13*31\n.2*2.\n.111.\n";
+        board.Transform().Should().Be(display);
     }
 }

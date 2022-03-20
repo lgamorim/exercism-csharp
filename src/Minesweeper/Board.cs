@@ -14,9 +14,9 @@ public class Board
         rectangle = new BoardSpace[rows, columns];
     }
 
-    public int Rows => rectangle.GetLength(0);
+    public int TotalRows => rectangle.GetLength(0);
 
-    public int Columns => rectangle.GetLength(1);
+    public int TotalColumns => rectangle.GetLength(1);
 
     public void SetMineAt(int row, int column)
     {
@@ -35,7 +35,7 @@ public class Board
         {
             for (var j = column - 1; j <= column + 1; j++)
             {
-                if (i < 0 || i >= Rows || j < 0 || j >= Columns) continue;
+                if (i < 0 || i >= TotalRows || j < 0 || j >= TotalColumns) continue;
                 if (HasMineAt(i, j)) total++;
             }
         }
@@ -43,12 +43,39 @@ public class Board
         return total;
     }
 
+    public string Transform()
+    {
+        var display = new StringBuilder();
+        for (var i = 0; i < TotalRows; i++)
+        {
+            for (var j = 0; j < TotalColumns; j++)
+            {
+                var square = DisplaySquare(GetSquareAt(i, j));
+                if (!HasMineAt(i, j))
+                {
+                    var adjacent = GetTotalAdjacentMines(i, j);
+                    if (adjacent > 0)
+                    {
+                        display.Append(adjacent);
+                        continue;
+                    }
+                }
+                
+                display.Append(square);
+            }
+
+            display.Append('\n');
+        }
+
+        return display.ToString();
+    }
+
     public override string ToString()
     {
         var display = new StringBuilder();
-        for (var i = 0; i < Rows; i++)
+        for (var i = 0; i < TotalRows; i++)
         {
-            for (var j = 0; j < Columns; j++)
+            for (var j = 0; j < TotalColumns; j++)
             {
                 var square = DisplaySquare(GetSquareAt(i, j));
                 display.Append(square);
