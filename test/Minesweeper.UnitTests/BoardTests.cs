@@ -57,4 +57,18 @@ public class BoardTests
         board.GetSquareAt(3, 3).Should().Be(BoardSpace.Blank);
         board.GetSquareAt(3, 4).Should().Be(BoardSpace.Blank);
     }
+
+    [Fact]
+    public void Should_DisplayBlankPerDotAndAsteriskPerMine_When_ToString()
+    {
+        var board = new Board(4, 5);
+
+        board.SetMineAt(0, 1);
+        board.SetMineAt(0, 3);
+        board.SetMineAt(1, 2);
+        board.SetMineAt(2, 2);
+
+        const string display = ".*.*.\n..*..\n..*..\n.....\n";
+        board.ToString().Should().Be(display);
+    }
 }
