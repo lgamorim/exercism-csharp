@@ -7,9 +7,9 @@
         <IsPackable>false</IsPackable>
         <OutputType>Exe</OutputType>
 
-        <AssemblyName>Exercism.Minesweeper.UnitTests</AssemblyName>
+        <AssemblyName>Exercism.Tournament.UnitTests</AssemblyName>
 
-        <RootNamespace>Exercism.Minesweeper.UnitTests</RootNamespace>
+        <RootNamespace>Exercism.Tournament.UnitTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Minesweeper\Minesweeper.csproj" />
+      <ProjectReference Include="..\..\src\Tournament\Tournament.csproj" />
     </ItemGroup>
 
 </Project>
