@@ -2,11 +2,13 @@
   <Folder Name="/src/">
     <Project Path="src/Matrix/Matrix.csproj" />
     <Project Path="src/Minesweeper/Minesweeper.csproj" />
+    <Project Path="src/React/React.csproj" />
     <Project Path="src/Tournament/Tournament.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/Matrix.UnitTests/Matrix.UnitTests.csproj" />
     <Project Path="test/Minesweeper.UnitTests/Minesweeper.UnitTests.csproj" />
+    <Project Path="test/React.UnitTests/React.UnitTests.csproj" />
     <Project Path="test/Tournament.UnitTests/Tournament.UnitTests.csproj" />
   </Folder>
 </Solution>
