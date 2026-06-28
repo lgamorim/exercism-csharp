@@ -4,11 +4,13 @@
     <Project Path="src/Minesweeper/Minesweeper.csproj" />
     <Project Path="src/React/React.csproj" />
     <Project Path="src/Tournament/Tournament.csproj" />
+    <Project Path="src/Zipper/Zipper.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/Matrix.UnitTests/Matrix.UnitTests.csproj" />
     <Project Path="test/Minesweeper.UnitTests/Minesweeper.UnitTests.csproj" />
     <Project Path="test/React.UnitTests/React.UnitTests.csproj" />
     <Project Path="test/Tournament.UnitTests/Tournament.UnitTests.csproj" />
+    <Project Path="test/Zipper.UnitTests/Zipper.UnitTests.csproj" />
   </Folder>
 </Solution>
