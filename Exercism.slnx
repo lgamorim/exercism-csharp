@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Forth/Forth.csproj" />
     <Project Path="src/Matrix/Matrix.csproj" />
     <Project Path="src/Minesweeper/Minesweeper.csproj" />
     <Project Path="src/React/React.csproj" />
@@ -7,6 +8,7 @@
     <Project Path="src/Zipper/Zipper.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/Forth.UnitTests/Forth.UnitTests.csproj" />
     <Project Path="test/Matrix.UnitTests/Matrix.UnitTests.csproj" />
     <Project Path="test/Minesweeper.UnitTests/Minesweeper.UnitTests.csproj" />
     <Project Path="test/React.UnitTests/React.UnitTests.csproj" />
